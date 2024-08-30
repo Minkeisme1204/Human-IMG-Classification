@@ -23,14 +23,18 @@ def label_image_data(data_path, label = None):
     return image_data, labelled_list
 
 def preprocess_data():
-    human_path = '/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/human data for classification/Human'
-    non_human_path = '/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/human data for classification/Non-Human'
+    human_path = '/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/human data for classification/Human'
+    non_human_path = '/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/human data for classification/Non-Human'
 
     human_img, human_lanels = label_image_data(human_path, label=1)
     non_human_img, non_human_labels = label_image_data(non_human_path, label=0)
 
     img_data = np.array(human_img + non_human_img)
+
     labels_data = np.array(human_lanels + non_human_labels)
+
+    # img_data = np.array(human_img + non_human_img)
+    # labels_data = np.array(human_lanels + non_human_labels)
 
     return img_data, labels_data
 
