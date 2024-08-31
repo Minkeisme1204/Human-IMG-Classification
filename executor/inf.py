@@ -5,7 +5,7 @@ from tensorflow.keras.preprocessing import image
 import matplotlib.pyplot as plt
 import numpy as np
 path = '/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/human data for classification/Inference'
-model = load_model('/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/results/Human.h5')
+model = load_model('/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/results/Human_best.h5')
 
 img_list = os.listdir(path)
 image_size = (64 ,64)

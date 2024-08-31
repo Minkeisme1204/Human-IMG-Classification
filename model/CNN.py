@@ -43,7 +43,7 @@ class CNN_Model(object):
         self.model.add(Dense(256, activation='relu'))
         self.model.add(Dropout(0.3))
 
-        # self.model.add(Dense(128, activation='relu'))
+        # self.model.add(Dense(256, activation='relu'))
         # self.model.add(Dropout(0.3))
 
         self.model.add(Dense(1, activation='sigmoid'))
@@ -74,4 +74,4 @@ model.Compile()
 x, y = preprocess_data()
 print(len(x), y.size)
 model.Train(x, y)
-model.save('/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/results/Human.h5')
+model.save('/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/results/Human_demo_1.h5')
