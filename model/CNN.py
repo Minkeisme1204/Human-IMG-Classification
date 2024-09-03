@@ -60,18 +60,20 @@ class CNN_Model(object):
         # early_callback = EarlyStopping(monitor="val_loss", min_delta= 0 , patience=10, verbose=1, mode="auto")
         log_dir = "/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
-        self.model.fit(X_train, Y_train, epochs=50, batch_size=32, validation_data=(X_val, Y_val), callbacks=[ tensorboard_callback])
-        accuracy = self.model.evaluate(X_test, Y_test, batch_size = 32)
-        print("The correct rate is: {}".format(accuracy))
+        self.model.fit(X_train, Y_train, epochs=50, batch_size=64, validation_data=(X_val, Y_val), callbacks=[tensorboard_callback])
+        
+
+    def Evaluate(self, X_test, Y_test):
+        metrics = self.model.evaluate(X_test, Y_test, batch_size = 64)
+        print("Loss value is: {}".format(metrics[0]))
+        print("Accuracy value is: {}".format(metrics[1]))
+        print("Recall value is: {}".format(metrics[2]))
+        print("Precision value is: {}".format(metrics[3]))
+        print("AUC value is: {}".format(metrics[4]))
+        return metrics
     def save(self, filename):
         self.model.save(filename)
         pass
 
 
-model = CNN_Model()
-model.Build()
-model.Compile()
-x, y = preprocess_data()
-print(len(x), y.size)
-model.Train(x, y)
-model.save('/home/minkescanor/Desktop/WORKPLACE/EDABK/Human Img Classify/Human-IMG-Classification/results/Human_demo_1.h5')
+
